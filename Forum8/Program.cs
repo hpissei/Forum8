@@ -47,7 +47,7 @@ namespace Forum8
         {
             int tempCounter = 0;
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append('{');
+            stringBuilder.Append('[');
             int count = pairs.Count;
             foreach (var pair in pairs)
             {
@@ -60,7 +60,7 @@ namespace Forum8
                 }
             }
 
-            stringBuilder.Append('}');
+            stringBuilder.Append(']');
             Console.WriteLine(stringBuilder);
         }
 
@@ -88,7 +88,6 @@ namespace Forum8
 
         static void Main()
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
             int target = 7;
             int[] array =  { 2,2,4,3,4,0,7,3,5, 5};//Scenario where duplicate may occur if sort not applied//{ 2, 4, 3, 7, 8, 5, 9 };
 
