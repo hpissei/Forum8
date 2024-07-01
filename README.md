@@ -14,6 +14,17 @@ In case if visual studio 2019 is not present we can run the code from "cmd" usin
  - I have uploaded a private fiddle also which we can check online without need to install anything. Link:-https://dotnetfiddle.net/8kpJtB
       ![image](https://github.com/hpissei/Forum8/assets/32298685/f1fd9b7b-d390-48ea-b149-00531b2699f6)
 
+ - Input :-
+    - Enter the array size ( Number of integers the array can have. ) Ex. 4
+    - Enter the arrray elements separated by space. Ex. 1 3 4 0
+    - Enter the target value. Ex.  4
+
+ - Output :-
+   - Array of unique pairs meeting the target sum. Ex. [(0,4),(1,3)]
+     
+ - Screenshot :-
+    ![image](https://github.com/hpissei/Forum8/assets/32298685/54aef7ee-24f0-407e-ae62-2fcdcf011927)
+
 # 2. An explanation of your algorithm choice
   - I have programmed the solution using custom algorithm for sorting the array I have used Insertion Sort.
   - I have sorted the array initially.
