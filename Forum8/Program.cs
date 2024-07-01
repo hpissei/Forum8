@@ -90,15 +90,23 @@ namespace Forum8
         {
             int target = 7;
             int[] array =  { 2,2,4,3,4,0,7,3,5, 5};//Scenario where duplicate may occur if sort not applied//{ 2, 4, 3, 7, 8, 5, 9 };
-
+            int size = 0;
             #region Input from Console
             Console.WriteLine("\nPlease enter the array size");
-            int size = Convert.ToInt32(Console.ReadLine());
+            string arraySize = Console.ReadLine();
+            if(!string.IsNullOrEmpty(arraySize))
+               size = Convert.ToInt32(arraySize);
             array = new int[size];
+
             Console.WriteLine("\nPlease enter the array elements space separated");
-            array = Array.ConvertAll(Console.ReadLine().Trim().Split(' '), Convert.ToInt32);
+            string stringArray = Console.ReadLine();
+            if(!string.IsNullOrEmpty(stringArray))
+               array = Array.ConvertAll(stringArray.Trim().Split(' '), Convert.ToInt32);
+    
             Console.WriteLine("\nPlease enter the target value");
-            target = Convert.ToInt32(Console.ReadLine());
+            string targetString = Console.ReadLine();
+            if(!string.IsNullOrEmpty(targetString))
+                target = Convert.ToInt32(targetString);
             #endregion
 
             #region Validate Input
