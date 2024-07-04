@@ -28,19 +28,25 @@ namespace Forum8
 
         static void GetUniquePairs(int[] array, int target)
         {
-            int length = array.Length;
-            for (int index = 0; index <= length; index++)
+            int length = array.Length; //[ 1 3 0 4 5] target = 4
+            for (int iterator = 0; iterator < length; iterator++)//&& array[iterator] <= target
             {
-                for (int jindex = index + 1; jindex < length; jindex++)
+                int difference = target - array[iterator];
+                if (difference < array[iterator])
+                    continue;
+
+                if (difference == array[iterator])
                 {
-                    if ((array[index] + array[jindex]) == target && !pairs.ContainsKey(array[index]))
+                    if (array.Count(x => x == difference) >= 2 && !pairs.ContainsKey(array[iterator]))
                     {
-                        pairs.Add(array[index], array[jindex]);
+                        pairs.Add(array[iterator], difference);
                     }
                 }
+                else if (array.Contains(difference) && !pairs.ContainsKey(array[iterator]))
+                {
+                    pairs.Add(array[iterator], difference);
+                }
             }
-
-            OutputUniquePairs(pairs);
         }
 
         private static void OutputUniquePairs(IDictionary<int, int> pairs)
@@ -73,13 +79,13 @@ namespace Forum8
 
             if (target >= int.MaxValue)
             {
-                Console.WriteLine($"Target value shall not exceed integer maximum value {int.MaxValue}");
+                Console.WriteLine($"Target difference shall not exceed integer maximum difference {int.MaxValue}");
                 return false;
             }
 
             if (array.Any(x => x >= int.MaxValue))
             {
-                Console.WriteLine($"Array element value shall not exceed integer maximum value {int.MaxValue}!");
+                Console.WriteLine($"Array element difference shall not exceed integer maximum difference {int.MaxValue}!");
                 return false;
             }
 
@@ -88,24 +94,24 @@ namespace Forum8
 
         static void Main()
         {
-            int target = 7;
-            int[] array =  { 2,2,4,3,4,0,7,3,5, 5};//Scenario where duplicate may occur if sort not applied//{ 2, 4, 3, 7, 8, 5, 9 };
+            int target = 7;// 4;// 5;//7;
+            int[] array = { 2, 2, 4, 3, 4, 0, 7, 3, 5, 5 };// { 0,1,2,2,2,5,-2,6};//{ 0,1,2,5};// { 0,1,2,2,2,5};// { 1,3,0,4,5, 5 };// {5,1,2,3,4,1,5,8,-3 };// { 2, 2, 4, 3, 4, 0,10, 7,9, 3, 5, 5, 8 };//{ 1, 3, 0, 4 ,5};//{ 2,2,4,3,4,0,7,3,5, 5};//Scenario where duplicate may occur if sort not applied//{ 2, 4, 3, 7, 8, 5, 9 };
             int size = 0;
             #region Input from Console
             Console.WriteLine("\nPlease enter the array size");
             string arraySize = Console.ReadLine();
-            if(!string.IsNullOrEmpty(arraySize))
-               size = Convert.ToInt32(arraySize);
+            if (!string.IsNullOrEmpty(arraySize))
+                size = Convert.ToInt32(arraySize);
             array = new int[size];
 
             Console.WriteLine("\nPlease enter the array elements space separated");
             string stringArray = Console.ReadLine();
-            if(!string.IsNullOrEmpty(stringArray))
-               array = Array.ConvertAll(stringArray.Trim().Split(' '), Convert.ToInt32);
-    
+            if (!string.IsNullOrEmpty(stringArray))
+                array = Array.ConvertAll(stringArray.Trim().Split(' '), Convert.ToInt32);
+
             Console.WriteLine("\nPlease enter the target value");
             string targetString = Console.ReadLine();
-            if(!string.IsNullOrEmpty(targetString))
+            if (!string.IsNullOrEmpty(targetString))
                 target = Convert.ToInt32(targetString);
             #endregion
 
@@ -115,11 +121,10 @@ namespace Forum8
             }
             #endregion
 
-            #region Sort Array
-            array = SortArray(array);
-            #endregion Sort Array
-
             GetUniquePairs(array, target);
+            
+            OutputUniquePairs(pairs);
+
             Console.ReadLine();
         }
     }

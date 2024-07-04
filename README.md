@@ -26,17 +26,18 @@ In case if visual studio 2019 is not present we can run the code from "cmd" usin
     ![image](https://github.com/hpissei/Forum8/assets/32298685/54aef7ee-24f0-407e-ae62-2fcdcf011927)
 
 # 2. An explanation of your algorithm choice
-  - I have programmed the solution using custom algorithm for sorting the array I have used Insertion Sort.
-  - I have sorted the array initially.
-  - Then tried to see if the sum of array element is equal to target value then I have added it to the dictionary if already not present.
-  - Finally once I get the pairs I have used StringBuilder to build a string for output which I am displaying on the console.
-    
+	- I am iterating through the array elements ( Now I am using only one for loop. )
+	- For each element I now calculating the difference i.e. target - array element value.
+	- If the difference is less then the array element value then I am skipping the iteration.
+	- If difference is equal to array element value need to check if the element appears more then once then only add to the dictionary if the key not already present in dictionary.
+	- Else If the difference is present as an element in array then I am inserting the pair ( array element, difference ) to the dictionary if the key not already present in dictionary.
+	- After all items are inserted I am printing the pairs to console.
+
 # 3. Time and space complexity.
 
 | Algorithm      | Time Complexity | Space Complexity |
 |--------------- | --------------- | ---------------- |
-| Insertion Sort |  O(N^2)         |	O(1)            |
-| Unique Pairs   |  O(N^2)	       |  O(1)            |
+| Unique Pairs   |  O(N)	       |  O(1)            |
 
 
 
