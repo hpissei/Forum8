@@ -37,7 +37,7 @@ In case if visual studio 2019 is not present we can run the code from "cmd" usin
 
 | Algorithm      | Time Complexity | Space Complexity |
 |--------------- | --------------- | ---------------- |
-| Unique Pairs   |  O(N)	       |  O(1)            |
+| Unique Pairs   |  O(N)	   |  O(n)            |
 
 
 
